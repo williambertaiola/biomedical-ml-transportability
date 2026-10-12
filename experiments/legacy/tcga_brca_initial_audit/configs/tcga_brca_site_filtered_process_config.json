@@ -1,0 +1,13 @@
+{
+  "input_samples_metadata": "data/legacy/tcga_brca_samples_standardized.csv",
+  "input_expression_matrix": "data/legacy/tcga_brca_expression_standardized.csv",
+  "output_root": "results/legacy/tcga_brca_initial_audit",
+  "allowed_tumor_levels": [
+    "01",
+    "11",
+    "06"
+  ],
+  "site_anchor": "AN",
+  "min_detected_samples": 20,
+  "min_variance": 0.001
+}

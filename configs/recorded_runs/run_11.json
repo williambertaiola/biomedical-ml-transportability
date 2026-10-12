@@ -1,0 +1,11 @@
+{
+  "calibration_bins": 10,
+  "dataset_name": "TCGA_BRCA_01_vs_11_M0_FromScratch",
+  "input_path": "data/legacy/tcga_brca_preprossed.csv",
+  "min_site_size": 20,
+  "output_dir": "results/legacy/output",
+  "random_seed": 42,
+  "save_pdf_plots": true,
+  "top_k_genes": 250,
+  "variance_prefilter_k": 5000
+}

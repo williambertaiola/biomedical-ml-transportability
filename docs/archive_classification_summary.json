@@ -1,0 +1,14 @@
+{
+  "configuration/run metadata": 64,
+  "directory": 781,
+  "documentation": 175,
+  "documentation/thesis": 1,
+  "figure/visualization": 5073,
+  "generated result/supporting asset": 2048,
+  "intermediate output": 56,
+  "required experimental input": 45,
+  "source code/report template": 502,
+  "temporary/log": 41,
+  "temporary/platform metadata": 9193,
+  "trained model/serialized artifact": 339
+}

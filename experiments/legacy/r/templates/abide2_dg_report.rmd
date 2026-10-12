@@ -1,0 +1,269 @@
+---
+title: "ABIDE II - Data Quality, Completeness, and Domain Shift Report"
+author: "William"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    df_print: paged
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  comment = NA,
+  fig.align = "center",
+  fig.width = 10,
+  fig.height = 5
+)
+
+suppressPackageStartupMessages({
+  library(readr)
+  library(dplyr)
+  library(knitr)
+  library(tibble)
+})
+
+safe_read_csv <- function(path) {
+  if (!file.exists(path)) return(NULL)
+  out <- tryCatch(
+    read_csv(path, show_col_types = FALSE),
+    error = function(e) NULL
+  )
+  out
+}
+
+kable_simple <- function(df, caption = NULL, digits = 4) {
+  if (is.null(df)) return(invisible(NULL))
+  knitr::kable(df, digits = digits, caption = caption)
+}
+
+find_fig <- function(fname) {
+  p <- file.path("figures", fname)
+  if (file.exists(p)) return(p)
+  if (file.exists(fname)) return(fname)
+  NA_character_
+}
+
+show_fig <- function(fname) {
+  p <- find_fig(fname)
+  if (is.na(p)) return(invisible(NULL))
+  knitr::include_graphics(p)
+}
+```
+
+# 1. Executive Summary
+
+```{r}
+file_overview <- safe_read_csv("../file_overview.csv")
+cleaned <- safe_read_csv("../cleaned_dataset.csv")
+audit <- safe_read_csv("../audit_duplicates.csv")
+site_counts <- safe_read_csv("site_counts.csv")
+site_dx <- safe_read_csv("site_by_diagnosis.csv")
+
+kable_simple(file_overview, "Input tables overview")
+```
+
+*Commento breve: questa tabella riassume i file sorgente, dimensioni e missingness globale per tabella.*
+
+```{r}
+if (!is.null(cleaned)) {
+  n_sub <- nrow(cleaned)
+  n_site <- if ("site_id" %in% colnames(cleaned)) n_distinct(cleaned$site_id) else NA_integer_
+  n_asd <- if ("diagnosis_label" %in% colnames(cleaned)) sum(cleaned$diagnosis_label == "ASD", na.rm = TRUE) else NA_integer_
+  n_ctrl <- if ("diagnosis_label" %in% colnames(cleaned)) sum(cleaned$diagnosis_label == "CTRL", na.rm = TRUE) else NA_integer_
+  dup_pairs <- if (!is.null(audit) && "n_scans" %in% colnames(audit)) sum(audit$n_scans > 1, na.rm = TRUE) else NA_integer_
+
+  quick <- tibble(
+    metric = c(
+      "Subjects in cleaned dataset",
+      "Number of sites",
+      "ASD count",
+      "CTRL count",
+      "Subject-modality pairs with duplicated scans"
+    ),
+    value = c(n_sub, n_site, n_asd, n_ctrl, dup_pairs)
+  )
+  kable_simple(quick, "Quick summary")
+}
+```
+
+*Commento breve: qui vedi subito se il dataset e' realmente multi-site e se il bilanciamento classi e' adatto a DG.*
+
+---
+
+# 2. Site / Domain Coverage
+
+```{r}
+kable_simple(site_counts, "Subjects per site")
+```
+
+*Commento breve: il numero di siti determina la fattibilita' di LOSO/LODO per generalizzazione cross-site.*
+
+```{r}
+kable_simple(site_dx, "Diagnosis distribution by site")
+```
+
+*Commento breve: questa tabella mostra eventuali sbilanciamenti di classe all'interno dei siti.*
+
+```{r, out.width='100%'}
+show_fig("01_subjects_per_site.png")
+```
+
+*Commento breve: barplot dei campioni per sito, utile per valutare se i domini sono sufficientemente popolati.*
+
+```{r, out.width='100%'}
+show_fig("02_diagnosis_by_site.png")
+```
+
+*Commento breve: vista stacked per capire la composizione ASD/CTRL in ogni dominio sito.*
+
+---
+
+# 3. Missingness and Completeness
+
+```{r}
+missingness <- safe_read_csv("missingness_by_column.csv")
+if (!is.null(missingness)) {
+  kable_simple(head(missingness, 25), "Top 25 columns by missingness")
+}
+```
+
+*Commento breve: le colonne con missingness elevata sono candidate all'esclusione dal feature set.*
+
+```{r, out.width='100%'}
+show_fig("03_top_missing_columns.png")
+```
+
+*Commento breve: grafico ranking delle variabili con maggiore incompleta copertura.*
+
+```{r, out.width='100%'}
+show_fig("04_missingness_heatmap.png")
+```
+
+*Commento breve: heatmap di missingness (soggetti vs colonne critiche) per identificare pattern non casuali.*
+
+---
+
+# 4. Duplicates and QAP Deduplication
+
+```{r}
+audit_summary <- safe_read_csv("audit_duplicates_summary.csv")
+kable_simple(audit_summary, "Duplicate scan summary by modality")
+```
+
+*Commento breve: questa tabella quantifica il numero medio/massimo di scan per soggetto prima della dedup.*
+
+```{r}
+if (!is.null(audit)) {
+  preview <- audit %>%
+    select(subject_id, modality, n_scans, mode, selected_unique_id, selected_quality_score, selection_reason) %>%
+    head(20)
+  kable_simple(preview, "Dedup audit preview (first 20)")
+}
+```
+
+*Commento breve: preview operativo dell'audit con la scelta scan finale e relativo score.*
+
+```{r, out.width='100%'}
+show_fig("09_duplicates_scans_distribution.png")
+```
+
+*Commento breve: distribuzione del numero di scan per soggetto/modalita', utile per stimare rischio leakage pre-dedup.*
+
+---
+
+# 5. Feature Set and Filtering
+
+```{r}
+feature_selection <- safe_read_csv("feature_selection.csv")
+kable_simple(feature_selection, "Feature selection (coverage + rules)")
+```
+
+*Commento breve: dettaglia quali feature sono state mantenute/escluse e il motivo (coverage/mandatory).*
+
+```{r}
+if (!is.null(feature_selection)) {
+  fs <- feature_selection %>%
+    group_by(feature_group, kept) %>%
+    summarise(n = n(), .groups = "drop")
+  kable_simple(fs, "Kept vs dropped by feature group")
+}
+```
+
+*Commento breve: sintesi utile per verificare se il feature set finale e' abbastanza ricco per modellazione.*
+
+---
+
+# 6. Site Shift (Transportability)
+
+```{r}
+shift_tbl <- safe_read_csv("qap_shift_by_site.csv")
+if (!is.null(shift_tbl) && nrow(shift_tbl) > 0) {
+  kable_simple(shift_tbl, "QAP descriptive shift by site")
+} else {
+  note_tbl <- tibble(
+    note = "Shift table is empty (typically because only one site is available in current export)."
+  )
+  kable_simple(note_tbl, "Shift analysis status")
+}
+```
+
+*Commento breve: se la tabella e' vuota, la valutazione cross-site non e' stimabile con questo export.*
+
+---
+
+# 7. DG Splits (LOSO/LODO)
+
+```{r}
+split_summary <- safe_read_csv("split_summary.csv")
+if (!is.null(split_summary) && nrow(split_summary) > 0) {
+  kable_simple(split_summary, "Generated LOSO/LODO splits")
+} else {
+  note_tbl <- tibble(
+    note = "No LOSO/LODO files generated: insufficient number of eligible domains (single-site case)."
+  )
+  kable_simple(note_tbl, "Split generation status")
+}
+```
+
+*Commento breve: in modalita' multi-site, qui troverai i fold train/val/test per ogni dominio lasciato fuori.*
+
+---
+
+# 8. Final Assessment
+
+```{r}
+final_tbl <- tibble(
+  Dimension = c(
+    "Data quality pipeline",
+    "Deduplication auditability",
+    "Model-ready dataset",
+    "Cross-site transportability testability"
+  ),
+  Status = c(
+    "Implemented",
+    "Implemented",
+    "Implemented",
+    if (!is.null(site_counts) && nrow(site_counts) > 1) "Ready" else "Blocked by single-site export"
+  ),
+  Note = c(
+    "Quality + missingness + diagnostics generated",
+    "Audit file includes selection reason and quality score",
+    "One row per subject, leakage-safe merge",
+    "Requires full ABIDE II multi-site phenotypic input"
+  )
+)
+kable_simple(final_tbl, "Overall pipeline status")
+```
+
+*Commento breve: con export multi-site completo questa stessa pipeline passa da analisi descrittiva a DG sperimentale piena.*
+

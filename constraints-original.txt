@@ -1,0 +1,6 @@
+# Versions recorded in four archived weighting run_config.json files.
+# This is a partial environment record, not a complete historical lockfile.
+numpy==2.4.2
+pandas==3.0.0
+matplotlib==3.10.8
+scikit-learn==1.8.0

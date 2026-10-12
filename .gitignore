@@ -1,0 +1,55 @@
+# Data and outputs are private local artifacts, including generated snapshots.
+/data/*
+!/data/README.md
+/results/*
+!/results/.gitkeep
+**/data/*
+**/outputs/
+**/output/
+**/logs/
+**/config_snapshot.json
+**/resolved_run_config.json
+*.joblib
+*.pkl
+*.pickle
+*.rds
+*.rdm
+*.csv
+*.tsv
+*.xlsx
+*.data
+*.parquet
+*.npy
+*.npz
+*.png
+*.pdf
+*.svg
+*.html
+*.log
+*.zip
+# Environment, credentials and operating system artifacts.
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+.DS_Store
+._*
+.idea/
+.vscode/
+# Local path configuration may contain personal paths.
+configs/paths.local.json
+
+# Packaging and plotting caches.
+*.egg-info/
+build/
+dist/
+.mplconfig/
+.cache/
+
+# Keep the root data instructions visible despite nested data exclusions.
+!/data/README.md

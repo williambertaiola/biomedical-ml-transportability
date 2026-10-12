@@ -1,0 +1,43 @@
+{
+  "combat_categorical_covariates": [
+    "sex"
+  ],
+  "combat_continuous_covariates": [
+    "age"
+  ],
+  "combat_low_cardinality_threshold": 10,
+  "dataset_name": "UCI Heart Disease",
+  "domain_column": "domain_id",
+  "ece_bins": 10,
+  "enabled_methods": [
+    "M0",
+    "M1"
+  ],
+  "id_column": "subject_id",
+  "input_path": "data/legacy/uci_heart_analysis_ready.csv",
+  "method_order": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "model_order": [
+    "LogisticRegression",
+    "RandomForest",
+    "HistGradientBoosting"
+  ],
+  "n_jobs": 1,
+  "output_dir": "results/legacy/UCI_Heart_M1_ComBat_outputs",
+  "random_seed": 42,
+  "schema_path": "data/legacy/uci_heart_feature_schema.json",
+  "target_column": "target",
+  "target_site_order": [
+    "cleveland",
+    "hungarian",
+    "long_beach_va",
+    "switzerland"
+  ],
+  "target_test_size": 0.5,
+  "threshold": 0.5
+}

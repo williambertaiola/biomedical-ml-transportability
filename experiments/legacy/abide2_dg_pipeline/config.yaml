@@ -1,0 +1,97 @@
+{
+  "project": {
+    "random_seed": 42,
+    "output_dir": "results/legacy/abide2_dg"
+  },
+  "paths": {
+    "data_root": "data/raw/abide2",
+    "phenotypic_file": null,
+    "anat_qap_file": null,
+    "dti_qap_file": null,
+    "functional_qap_file": null
+  },
+  "schema": {
+    "phenotypic": {
+      "subject_id": null,
+      "site_id": null,
+      "diagnosis": null,
+      "age": null,
+      "sex": null
+    },
+    "qap": {
+      "anat_qap": {
+        "subject_id": null,
+        "site_id": null,
+        "session": null,
+        "series": null,
+        "unique_id": null
+      },
+      "dti_qap": {
+        "subject_id": null,
+        "site_id": null,
+        "session": null,
+        "series": null,
+        "unique_id": null
+      },
+      "functional_qap": {
+        "subject_id": null,
+        "site_id": null,
+        "session": null,
+        "series": null,
+        "unique_id": null
+      }
+    },
+    "diagnosis": {
+      "positive_labels": [
+        "1",
+        "ASD",
+        "AUTISM",
+        "AUT"
+      ],
+      "negative_labels": [
+        "2",
+        "CTRL",
+        "CONTROL",
+        "TDC",
+        "TD"
+      ],
+      "positive_name": "ASD",
+      "negative_name": "CTRL"
+    }
+  },
+  "dedup": {
+    "mode": "keep_best_scan"
+  },
+  "feature_engineering": {
+    "missing_coverage_threshold": 0.8,
+    "qap_prefixes": [
+      "anat_",
+      "dti_",
+      "func_"
+    ],
+    "covariates": [
+      "age",
+      "sex",
+      "diagnosis",
+      "site_id"
+    ]
+  },
+  "splits": {
+    "strategies": [
+      "loso",
+      "lodo"
+    ],
+    "domain_column": "site_id",
+    "lodo_domain_columns": [
+      "site_id"
+    ],
+    "diagnosis_column": "diagnosis",
+    "val_fraction": 0.2,
+    "random_seed": 42,
+    "min_subjects_per_test_domain": 10
+  },
+  "report": {
+    "n_top_missing_columns": 30,
+    "n_top_shift_metrics": 12
+  }
+}

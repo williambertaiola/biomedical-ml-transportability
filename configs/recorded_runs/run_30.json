@@ -1,0 +1,33 @@
+{
+  "dataset_name": "UCI Heart Disease",
+  "domain_column": "domain_id",
+  "ece_bins": 10,
+  "id_column": "subject_id",
+  "input_path": "data/legacy/uci_heart_analysis_ready.csv",
+  "method_name": "M0",
+  "method_order": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "model_order": [
+    "LogisticRegression",
+    "RandomForest",
+    "HistGradientBoosting"
+  ],
+  "n_jobs": 1,
+  "output_dir": "results/legacy/outputs",
+  "random_seed": 42,
+  "schema_path": "data/legacy/uci_heart_feature_schema.json",
+  "target_column": "target",
+  "target_site_order": [
+    "cleveland",
+    "hungarian",
+    "long_beach_va",
+    "switzerland"
+  ],
+  "target_test_size": 0.5,
+  "threshold": 0.5
+}

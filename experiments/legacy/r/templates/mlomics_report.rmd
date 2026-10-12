@@ -1,0 +1,207 @@
+---
+title: "MLOmics Main_Dataset — Quality, Completezza e Rappresentatività"
+author: "William"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    df_print: paged
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center",
+  out.width = "100%"
+)
+
+suppressPackageStartupMessages({
+  library(readr)
+  library(dplyr)
+  library(knitr)
+  library(tibble)
+})
+
+safe_read_csv <- function(path) {
+  if (!file.exists(path)) return(NULL)
+  read_csv(path, show_col_types = FALSE)
+}
+
+kable_simple <- function(df, caption=NULL) {
+  if (is.null(df)) {
+    cat("**Commento:** file non trovato.\n\n")
+    return(invisible(NULL))
+  }
+  if (!is.null(caption)) cat("\n\n**", caption, "**\n\n", sep = "")
+  knitr::kable(df)
+}
+
+find_fig <- function(fname) {
+  candidates <- c(file.path("figures", fname), fname)
+  hit <- candidates[file.exists(candidates)][1]
+  if (is.na(hit) || length(hit) == 0) return(NA_character_)
+  hit
+}
+
+show_fig <- function(fname, title=NULL) {
+  p <- find_fig(fname)
+  if (is.na(p)) {
+    cat("\n\n**Figura non trovata:**", fname, "\n\n")
+  } else {
+    if (!is.null(title)) cat("\n\n### ", title, "\n\n", sep = "")
+    knitr::include_graphics(p)
+  }
+}
+```
+
+# 1. Overview del dataset
+
+```{r}
+catalog <- safe_read_csv("file_catalog.csv")
+unit_summary <- safe_read_csv("dataset_unit_summary.csv")
+task_summary <- safe_read_csv("task_summary.csv")
+modality_summary <- safe_read_csv("modality_summary.csv")
+
+if (!is.null(catalog)) {
+  overview <- tibble(
+    metric = c(
+      "Totale file CSV",
+      "Numero task",
+      "Numero cohort (folder-level)",
+      "Numero varianti",
+      "Dimensione totale (GB)",
+      "Numero unità dataset (task/cohort/variant)",
+      "Tasso consistenza campioni multi-omics"
+    ),
+    value = c(
+      nrow(catalog),
+      n_distinct(catalog$task),
+      n_distinct(catalog$cohort),
+      n_distinct(catalog$variant),
+      round(sum(catalog$size_mb, na.rm = TRUE) / 1024, 3),
+      ifelse(is.null(unit_summary), NA, nrow(unit_summary)),
+      ifelse(is.null(unit_summary), NA, round(mean(unit_summary$omics_sample_consistency_flag, na.rm = TRUE), 3))
+    )
+  )
+  kable_simple(overview, "Metriche globali")
+  cat("\n\n**Commento:** il dataset è ampio (molti file e molte coorti) e adatto a un'analisi strutturale multi-task.\n\n")
+}
+```
+
+# 2. Distribuzione per task
+
+```{r}
+kable_simple(task_summary, "Task summary")
+cat("\n\n**Commento:** i task sono sbilanciati in numerosità file; Clustering è il blocco più grande.\n\n")
+```
+
+```{r}
+show_fig("01_files_by_task.png", "Numero file per task")
+cat("\n\n**Commento:** conferma la dominanza del task Clustering in termini di volume di file.\n\n")
+```
+
+```{r}
+show_fig("02_modality_by_task.png", "Distribuzione modalità per task")
+cat("\n\n**Commento:** le 4 omiche principali (mRNA, miRNA, Methy, CNV) sono presenti in modo sistematico nei task.\n\n")
+```
+
+# 3. Modalità omiche e scala dei dati
+
+```{r}
+kable_simple(modality_summary, "Modality summary")
+cat("\n\n**Commento:** la copertura per le omiche core è regolare; label/survival compaiono solo dove previsto dal task.\n\n")
+```
+
+```{r}
+show_fig("03_rows_by_modality.png", "Distribuzione numero righe per modalità (log scale)")
+cat("\n\n**Commento:** le differenze di scala tra modalità sono sostanziali e coerenti con feature-space eterogeneo.\n\n")
+```
+
+```{r}
+show_fig("04_samples_by_modality.png", "Distribuzione numero campioni stimati per modalità (log scale)")
+cat("\n\n**Commento:** il numero campioni è in genere allineato tra omiche nello stesso dataset unit.\n\n")
+```
+
+# 4. Completezza e consistenza multi-omics
+
+```{r}
+if (!is.null(unit_summary)) {
+  us <- unit_summary %>%
+    arrange(omics_sample_consistency_flag, desc(omics_samples_range), desc(total_size_mb)) %>%
+    select(task, cohort, variant, n_modalities_omics, omics_modalities,
+           omics_samples_min, omics_samples_max, omics_samples_range,
+           omics_sample_consistency_flag, mean_sample_missing_pct) %>%
+    head(15)
+  kable_simple(us, "Prime 15 unità (focus consistenza campioni)")
+  cat("\n\n**Commento:** quasi tutte le unità sono consistenti; eventuali range > 0 indicano lieve disallineamento tra omiche.\n\n")
+}
+```
+
+```{r}
+show_fig("05_alignment_consistency_by_variant.png", "Consistenza campioni tra omiche per variante")
+cat("\n\n**Commento:** la consistenza è molto alta nelle varianti principali; utile per modeling senza leakage da mismatch grossi.\n\n")
+```
+
+```{r}
+show_fig("09_units_by_task_variant.png", "Unità dataset per task e variante")
+cat("\n\n**Commento:** la struttura task-variant è ben distribuita e consente confronti metodologici tra varianti.\n\n")
+```
+
+```{r}
+show_fig("10_modality_presence_heatmap.png", "Presenza modalità omiche (top unità per dimensione)")
+cat("\n\n**Commento:** la matrice mostra una copertura multi-omica robusta, con pattern attesi tra coorti e varianti.\n\n")
+```
+
+# 5. Missingness e file critici
+
+```{r}
+top_missing <- safe_read_csv("top_missingness_preview.csv")
+kable_simple(top_missing, "Top file per missingness (preview su righe campionate)")
+cat("\n\n**Commento:** la missingness è generalmente bassa; i picchi locali vanno verificati per impatto sul task specifico.\n\n")
+```
+
+```{r}
+show_fig("07_preview_missingness_by_modality.png", "Missingness preview per modalità")
+cat("\n\n**Commento:** la maggior parte delle modalità mantiene missingness contenuta nel campionamento effettuato.\n\n")
+```
+
+# 6. Peso dei file e costi computazionali
+
+```{r}
+top_large <- safe_read_csv("top_largest_files.csv")
+kable_simple(top_large, "Top file più grandi")
+cat("\n\n**Commento:** questi file guidano i costi I/O e memoria; utile considerarli per pianificazione pipeline.\n\n")
+```
+
+```{r}
+show_fig("06_top_cohorts_by_size.png", "Top task/cohort per dimensione totale")
+cat("\n\n**Commento:** alcune coorti concentrano gran parte del volume dati e possono dominare tempi di preprocessing.\n\n")
+```
+
+```{r}
+show_fig("08_largest_files.png", "Top 20 file più grandi")
+cat("\n\n**Commento:** i file più pesanti sono candidati prioritari per ottimizzazione (cache/parquet/chunking).\n\n")
+```
+
+# 7. Valutazione finale e prossimi step
+
+- **Rappresentatività:** alta per analisi multi-omica strutturale, grazie a copertura ampia di task/coorti/modalità.
+- **Completezza:** buona nel preview campionato, con pochi punti locali da monitorare.
+- **Consistenza tra omiche:** molto alta su unità task/cohort/variant (quasi tutte allineate nei campioni).
+- **Rischi pratici:** sbilanciamenti per task e dimensioni file elevate in alcune coorti.
+
+**Raccomandazioni operative:**
+
+1. Validare i pochi casi con disallineamento campioni (`omics_samples_range > 0`) prima del training.
+2. Applicare filtri di qualità/missingness per modality-specific pipelines.
+3. Convertire i file più grandi in formato colonnare (Parquet) per ridurre I/O.
+4. Definire split robusti per coorte/variant se l'obiettivo è transportability/domain generalization.
+

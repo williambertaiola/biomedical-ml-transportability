@@ -1,0 +1,7 @@
+{
+  "seed": 42,
+  "expression_matrix": "data/legacy/TCGA-BRCA.star_counts.tsv",
+  "clinical_dir": "results/legacy/tcga_brca_initial_audit",
+  "output_root": "results/legacy/tcga_brca_initial_audit",
+  "desktop_output_root": "results/legacy/tcga_brca_initial_audit"
+}

@@ -1,0 +1,14 @@
+# Core training, evaluation, preprocessing and report generation.
+# Lower bounds below are recorded in the archived ABIDE DG requirements.
+numpy>=1.23
+pandas>=1.5
+scipy>=1.9
+scikit-learn>=1.2
+matplotlib>=3.6
+seaborn>=0.12
+PyYAML>=6.0
+joblib
+openpyxl
+statsmodels
+# Optional to M0/M2/M3, required for the original neuroCombat backend.
+neuroCombat

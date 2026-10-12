@@ -1,0 +1,190 @@
+[
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/tcga_weighting_output_v5/run_config.json",
+    "final_path": "configs/recorded_runs/run_01.json",
+    "excluded_fields": [
+      "schema"
+    ],
+    "original_sha256": "3391532203d24dd17ca57bcf758f6955262ebc49bd7e3dd34e5d39f870c5b05d"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/uci_weighting_output/run_config.json",
+    "final_path": "configs/recorded_runs/run_02.json",
+    "excluded_fields": [
+      "schema"
+    ],
+    "original_sha256": "8b6a4433c8f5ba9add5aa63a6c80fb82e5077ccbf2c35cf2a2c6d571bea2aede"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/abide2_weighting_output/run_config.json",
+    "final_path": "configs/recorded_runs/run_03.json",
+    "excluded_fields": [
+      "schema"
+    ],
+    "original_sha256": "f40390b406a1fa688d2dc991ceb4ae7511661921fd25e3560dafdb242c71c04b"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/tcga_stage_reimagined_m0/output/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_04.json",
+    "excluded_fields": [],
+    "original_sha256": "fb1816426c77948608114e914efd2ef8eb939c2bf6350688d69e259023e18b10"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/tcga_m0_uniform_single/output_flat_tcga_ready/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_05.json",
+    "excluded_fields": [],
+    "original_sha256": "f579195e8a4a2ea5328c5fe2e4bf0d02d84dae867baa20add750bb483f96254a"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/tcga_m0_uniform_single/_build_fast/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_06.json",
+    "excluded_fields": [],
+    "original_sha256": "f579195e8a4a2ea5328c5fe2e4bf0d02d84dae867baa20add750bb483f96254a"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/tcga_m0_uniform_single/_build/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_07.json",
+    "excluded_fields": [],
+    "original_sha256": "3b32a246ded27e3a05b0e37317d8d0a9cd424554ba516ddb42d4580f7608c3d9"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/uci_m0_uniform_single/_build/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_08.json",
+    "excluded_fields": [],
+    "original_sha256": "eb4b1a3c24c9841aedfa0be194aa11fb3af9c46530dec424582876b17364abd0"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/uci_originals_build/weighting/run_config.json",
+    "final_path": "configs/recorded_runs/run_09.json",
+    "excluded_fields": [
+      "schema"
+    ],
+    "original_sha256": "8b6a4433c8f5ba9add5aa63a6c80fb82e5077ccbf2c35cf2a2c6d571bea2aede"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/uci_originals_build/transductive_learning/config_used.json",
+    "final_path": "configs/recorded_runs/run_10.json",
+    "excluded_fields": [],
+    "original_sha256": "ff6c1e9da74fa7cef67e13d14d9a40d7649231ed77e873adc252f449f85da10b"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/tcga_m0_from_scratch/output/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_11.json",
+    "excluded_fields": [],
+    "original_sha256": "2630f9a5f0df91421bda2762237daa90787b28a3e9bd1b4ecd4bf4fd9f5eac41"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/abide2_transductive_learning_new/output_abide_local/config_used.json",
+    "final_path": "configs/recorded_runs/run_12.json",
+    "excluded_fields": [],
+    "original_sha256": "e6ccb2417e7c0312c094ba64767e0636ece2dcb1a996a95f8c3994a32d658ee1"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/abide2_transductive_learning_new/output_local/config_used.json",
+    "final_path": "configs/recorded_runs/run_13.json",
+    "excluded_fields": [],
+    "original_sha256": "2f4279898b1b2df4bccd8b36c5bd817f35c8dbda6ae01f35905c1415ae2319a1"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/uci_transductive_learning_new/output_local/config_used.json",
+    "final_path": "configs/recorded_runs/run_14.json",
+    "excluded_fields": [],
+    "original_sha256": "ff6c1e9da74fa7cef67e13d14d9a40d7649231ed77e873adc252f449f85da10b"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/tcga_transductive_learning_new/output_local/config_used.json",
+    "final_path": "configs/recorded_runs/run_15.json",
+    "excluded_fields": [],
+    "original_sha256": "2f4279898b1b2df4bccd8b36c5bd817f35c8dbda6ae01f35905c1415ae2319a1"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/abide2_m0_uniform/output/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_16.json",
+    "excluded_fields": [],
+    "original_sha256": "2953103a0a317bc4b8e53d745c84d08de7e9797fbee16093d59c9f59cb3ed09f"
+  },
+  {
+    "archive_path": "3_Results_databases/TCGA/Methods/TCGA_BRCA_M4_bootstrap/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_17.json",
+    "excluded_fields": [],
+    "original_sha256": "5850c709b2e073bf8e6db5df0853d9557fce340e1bfc8601f7d583ff50b6594f"
+  },
+  {
+    "archive_path": "3_Results_databases/TCGA/Methods/TCGA_BRCA_M0/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_18.json",
+    "excluded_fields": [],
+    "original_sha256": "836a07910c113c1b007d931203ccc2e69d81278b5b9be2541c135456aff63918"
+  },
+  {
+    "archive_path": "3_Results_databases/TCGA/Methods/TCGA_BRCA_M1/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_19.json",
+    "excluded_fields": [],
+    "original_sha256": "b5b0847db870ddc5a8d66adc05866edd2c1508893e24b7e067f0ab12d2b44816"
+  },
+  {
+    "archive_path": "3_Results_databases/TCGA/Methods/TCGA_BRCA_M4/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_20.json",
+    "excluded_fields": [],
+    "original_sha256": "20d1c8ed8ebd329236f27f5244536d2e4e5142b3245042c4998dec6067fdb6d6"
+  },
+  {
+    "archive_path": "3_Results_databases/TCGA/Methods/TCGA_BRCA_M3/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_21.json",
+    "excluded_fields": [],
+    "original_sha256": "6514d1e1e5a95879140509585b0ae69c01ae4ce49dd64abbd8bb239c0070f4a3"
+  },
+  {
+    "archive_path": "3_Results_databases/TCGA/Methods/TCGA_BRCA_M2/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_22.json",
+    "excluded_fields": [],
+    "original_sha256": "b029948c5b57c60f5a389acd86d3f0f08b1d5e96c041554729964ea866e1bbbe"
+  },
+  {
+    "archive_path": "3_Results_databases/UCI/Methods/UCI_Heart_M4_bootstrap/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_23.json",
+    "excluded_fields": [],
+    "original_sha256": "0c87f66447ce3f40d9b316aacf69d0622913f6e93b3e12d5c74222c24cf63b5d"
+  },
+  {
+    "archive_path": "3_Results_databases/UCI/Methods/UCI_Heart_M4/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_24.json",
+    "excluded_fields": [],
+    "original_sha256": "7f574b4c1889d6643e93a97d644b639744986a59bd6bd5cc2082f188b3430bc0"
+  },
+  {
+    "archive_path": "3_Results_databases/UCI/Methods/UCI_Heart_M3/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_25.json",
+    "excluded_fields": [],
+    "original_sha256": "0a4b7a5d019e2a21f2e767a1db3676bf404ab3ca9fb455cb44a080517e5bf252"
+  },
+  {
+    "archive_path": "3_Results_databases/UCI/Methods/UCI_Heart_M2/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_26.json",
+    "excluded_fields": [],
+    "original_sha256": "121e9f3387a1afad36560b98c58525e2a5d9ec11058d33d50ba3227b16e6ef7a"
+  },
+  {
+    "archive_path": "3_Results_databases/UCI/Methods/UCI_Heart_M1/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_27.json",
+    "excluded_fields": [],
+    "original_sha256": "bea83dc7f1d56ba1ac01a930cd04a314f4374657add5ff44bebbf72cd4debbaf"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/baseline_m0_uci_sitepair/output/UCI/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_28.json",
+    "excluded_fields": [],
+    "original_sha256": "42ce19878374ccd337b2f316f8c889638d7bc7548e2c31b17e5e8e3bc2beead9"
+  },
+  {
+    "archive_path": "2_Codes_pipeline/2_Codes_and_outputs/baseline_m0/output/UCI/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_29.json",
+    "excluded_fields": [],
+    "original_sha256": "a65fdd70ed9930c8f6e2a5672b625de6e5da1211e8d2a7118649cc14c0daa9d5"
+  },
+  {
+    "archive_path": "3_Results_databases/UCI/Methods/UCI_Heart_M0/outputs/config_snapshot.json",
+    "final_path": "configs/recorded_runs/run_30.json",
+    "excluded_fields": [],
+    "original_sha256": "ff4975a324cfcedb1e9f852476a4a9326a8bddfc4f3f056cff14f771c38be511"
+  }
+]

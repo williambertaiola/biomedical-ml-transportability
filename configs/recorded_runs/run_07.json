@@ -1,0 +1,42 @@
+{
+  "auto_exclude_id_like": true,
+  "calibration_bins": 10,
+  "dataset_name": "TCGA_BRCA_01_vs_11_SitesWithBothClasses",
+  "domain_col": "site",
+  "enable_calibration_plots": true,
+  "enable_ece": true,
+  "enable_pairwise_site_transfer": true,
+  "enable_xgboost": true,
+  "extra_exclude_cols": [
+    "tumor_level",
+    "sample_type_label",
+    "domain_primary",
+    "domain_source"
+  ],
+  "feature_selection_method": "selectkbest",
+  "feature_selection_top_k": 1000,
+  "force_categorical_cols": [],
+  "force_numeric_cols": [],
+  "id_cols": [
+    "sample_barcode",
+    "subject_id"
+  ],
+  "input_path": "data/legacy/tcga_modeling_input.csv",
+  "low_cardinality_as_categorical": true,
+  "max_low_cardinality_unique": 10,
+  "min_domain_size": 20,
+  "n_jobs": 1,
+  "output_dir": "results/legacy/_build",
+  "pca_n_components": null,
+  "positive_label": null,
+  "random_seed": 42,
+  "resolved_output_dir": "results/legacy/_build",
+  "save_pdf_plots": true,
+  "target_col": "target_binary",
+  "target_mapping": {
+    "negative": 0,
+    "positive": 1
+  },
+  "variance_threshold": 0.0,
+  "within_domain_cv_splits": 5
+}

@@ -1,0 +1,7 @@
+{
+  "input_root": "data/raw/abide2/",
+  "composite_phenotypic_path": "data/raw/abide2/ABIDEII_Composite_Phenotypic.csv",
+  "long_phenotypic_path": "data/raw/abide2/ABIDEII_Long_Composite_Phenotypic.csv",
+  "output_root": "results/Data/ABIDE2_preprocessing",
+  "desktop_output_root": null
+}

@@ -1,0 +1,21 @@
+{
+  "config": {
+    "input_path": "data/legacy/abide2_core_multisite_transportability_dataset.csv",
+    "low_cardinality_threshold": 10,
+    "model_name": "LogisticRegression",
+    "output_dir": "results/legacy/abide2_weighting_output",
+    "primary_metric": "balanced_accuracy",
+    "random_seed": 42,
+    "similarity_alpha": 2.0
+  },
+  "dataset_shape_after_cleaning": [
+    1114,
+    30
+  ],
+  "versions": {
+    "matplotlib": "3.10.8",
+    "numpy": "2.4.2",
+    "pandas": "3.0.0",
+    "sklearn": "1.8.0"
+  }
+}

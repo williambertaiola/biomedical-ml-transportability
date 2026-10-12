@@ -1,0 +1,45 @@
+{
+  "dataset_name": "UCI_Heart_Disease",
+  "input_path": "data/legacy/uci_preprocessed.csv",
+  "output_dir": "results/legacy/baseline_m0",
+  "target_col": "target",
+  "domain_col": "domain_id",
+  "id_cols": [
+    "subject_id"
+  ],
+  "extra_exclude_cols": [
+    "target_original"
+  ],
+  "force_categorical_cols": [
+    "sex",
+    "cp",
+    "fbs",
+    "restecg",
+    "exang",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "force_numeric_cols": [
+    "age",
+    "trestbps",
+    "chol",
+    "thalach",
+    "oldpeak"
+  ],
+  "random_seed": 42,
+  "n_jobs": 1,
+  "enable_xgboost": true,
+  "enable_ece": true,
+  "enable_calibration_plots": true,
+  "calibration_bins": 10,
+  "min_domain_size": 20,
+  "save_pdf_plots": true,
+  "low_cardinality_as_categorical": true,
+  "max_low_cardinality_unique": 10,
+  "auto_exclude_id_like": true,
+  "feature_selection_method": "none",
+  "feature_selection_top_k": 1000,
+  "variance_threshold": 0.0,
+  "pca_n_components": null
+}

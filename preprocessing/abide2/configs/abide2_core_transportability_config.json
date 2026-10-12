@@ -1,0 +1,5 @@
+{
+  "master_table_path": "results/Data/ABIDE2_preprocessing/data/processed/abide2_composite_subject_level_unified_database.csv",
+  "output_root": "results/Data/ABIDE2_preprocessing",
+  "desktop_output_root": null
+}

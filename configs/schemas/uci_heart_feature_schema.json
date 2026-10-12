@@ -1,0 +1,55 @@
+{
+  "categorical_features": [
+    "sex",
+    "cp",
+    "fbs",
+    "restecg",
+    "exang",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "domain_column": "domain_id",
+  "excluded_columns": [
+    "subject_id",
+    "domain_id",
+    "target_original",
+    "target"
+  ],
+  "id_columns": [
+    "subject_id"
+  ],
+  "metadata_columns": [
+    "domain_id"
+  ],
+  "notes_on_exclusions": [
+    "domain_id is preserved as metadata for later LODO/LOSO evaluation and is excluded from predictive features by default.",
+    "subject_id is an identifier and is excluded from modeling.",
+    "target and target_original are labels, not predictive inputs.",
+    "Additional provenance columns and raw_patient_id are preserved in the interim dataset and source manifest, not in the final analysis-ready table."
+  ],
+  "numeric_features": [
+    "age",
+    "trestbps",
+    "chol",
+    "thalach",
+    "oldpeak"
+  ],
+  "predictive_feature_columns": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "target_column": "target",
+  "target_original_column": "target_original"
+}

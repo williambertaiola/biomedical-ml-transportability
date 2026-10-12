@@ -1,0 +1,79 @@
+{
+  "dataset_name": "abide2_core_multisite_transportability_dataset",
+  "description": "Cross-sectional non-imaging ABIDE II transportability bundle with strict and rich variants.",
+  "rich_variant": {
+    "feature_columns": [
+      "age_at_scan",
+      "sex_code",
+      "handedness_category_code",
+      "eye_status_at_scan_code",
+      "fiq",
+      "viq",
+      "piq",
+      "fiq_test_type",
+      "viq_test_type",
+      "piq_test_type",
+      "current_med_status_code",
+      "srs_edition",
+      "srs_version",
+      "srs_informant",
+      "srs_total_raw",
+      "srs_total_t",
+      "srs_awareness_raw",
+      "srs_awareness_t",
+      "srs_cognition_raw",
+      "srs_cognition_t",
+      "srs_communication_raw",
+      "srs_communication_t",
+      "srs_motivation_raw",
+      "srs_motivation_t",
+      "srs_mannerisms_raw",
+      "srs_mannerisms_t"
+    ],
+    "high_target_proximity_block": [
+      "srs_edition",
+      "srs_version",
+      "srs_informant",
+      "srs_total_raw",
+      "srs_total_t",
+      "srs_awareness_raw",
+      "srs_awareness_t",
+      "srs_cognition_raw",
+      "srs_cognition_t",
+      "srs_communication_raw",
+      "srs_communication_t",
+      "srs_motivation_raw",
+      "srs_motivation_t",
+      "srs_mannerisms_raw",
+      "srs_mannerisms_t"
+    ],
+    "path": "data/processed/abide2_core_multisite_transportability_dataset.csv",
+    "recommended_for": "richer clinical experiments after careful leakage review"
+  },
+  "strict_variant": {
+    "feature_columns": [
+      "age_at_scan",
+      "sex_code",
+      "handedness_category_code",
+      "eye_status_at_scan_code",
+      "fiq"
+    ],
+    "path": "data/processed/abide2_core_multisite_transportability_dataset_strict.csv",
+    "recommended_for": "primary non-circular baseline and transportability analyses"
+  },
+  "subject_filtering": {
+    "excluded_sites": [
+      "ABIDEII-UCLA_Long",
+      "ABIDEII-UPSM_Long"
+    ],
+    "n_sites": 19,
+    "n_subjects": 1114
+  },
+  "train_fold_only_preprocessing": {
+    "categorical_encoding": "one_hot_handle_unknown_ignore",
+    "categorical_imputation": "most_frequent",
+    "numeric_imputation": "median",
+    "scaling": "standardize_numeric_features_after_imputation_using_training_fold_only",
+    "split_strategy": "Leave-One-Site-Out or GroupKFold with site as group"
+  }
+}

@@ -1,0 +1,13 @@
+# Additional imports in archived/SHAP/DASHI workflows; not needed for core M0.
+-r requirements.txt
+plotly
+shap
+xgboost
+lightgbm
+prince
+umap-learn
+inmoose
+tqdm
+pyarrow>=10.0
+# DASHI distribution/source revision is unresolved. See docs/DEPENDENCIES.md.
+# Do not install an arbitrary package named dashi.

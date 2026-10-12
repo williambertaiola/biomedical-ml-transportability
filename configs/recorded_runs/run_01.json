@@ -1,0 +1,21 @@
+{
+  "config": {
+    "input_path": "data/legacy/tcga_brca_preprossed.csv",
+    "low_cardinality_threshold": 10,
+    "model_name": "LogisticRegression",
+    "output_dir": "results/legacy/tcga_weighting_output_v5",
+    "primary_metric": "balanced_accuracy",
+    "random_seed": 42,
+    "similarity_alpha": 2.0
+  },
+  "dataset_shape_after_cleaning": [
+    1089,
+    53542
+  ],
+  "versions": {
+    "matplotlib": "3.10.8",
+    "numpy": "2.4.2",
+    "pandas": "3.0.0",
+    "sklearn": "1.8.0"
+  }
+}

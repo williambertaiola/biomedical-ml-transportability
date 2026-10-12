@@ -1,0 +1,6 @@
+{
+  "phenotypic_file": "data/raw/abide2/ABIDEII-BNI_1.csv",
+  "qap_dir": "data/raw/abide2/ABIDEII_MRI_Quality_Metrics",
+  "output_root": "results/Data/ABIDE2_preprocessing",
+  "desktop_output_root": null
+}

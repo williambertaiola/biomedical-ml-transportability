@@ -1,0 +1,45 @@
+{
+  "combat_label_covariate": "target",
+  "combat_top_k_variance_genes": 500,
+  "dataset_name": "TCGA-BRCA Stage Transportability",
+  "domain_column": "site",
+  "ece_bins": 10,
+  "enabled_methods": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "gene_prefix": "ENSG",
+  "id_column": "subject_id",
+  "input_path": "data/legacy/tcga_brca_stage_transportability_dataset.csv",
+  "m2_min_domain_weight": 0.25,
+  "m2_weight_temperature": 0.12,
+  "m3_target_blend_weight": 0.5,
+  "method_order": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "min_site_class_count": 2,
+  "min_site_samples": 30,
+  "min_variance_threshold": 1e-08,
+  "model_order": [
+    "LogisticRegression",
+    "RandomForest",
+    "HistGradientBoosting"
+  ],
+  "n_jobs": 1,
+  "output_dir": "results/legacy/TCGA_BRCA_M4_ComBat_transductive_outputs",
+  "random_seed": 42,
+  "target_column": "target",
+  "target_label_column": "target_label",
+  "target_sites": [],
+  "target_test_size": 0.5,
+  "threshold": 0.5,
+  "top_k_model_genes": 500,
+  "top_k_variance_genes": 2000
+}

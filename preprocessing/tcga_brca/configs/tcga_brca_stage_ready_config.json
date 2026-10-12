@@ -1,0 +1,7 @@
+{
+  "seed": 42,
+  "expression_matrix": "data/raw/tcga_brca/TCGA-BRCA.star_counts.tsv",
+  "clinical_dir": "data/raw/tcga_brca/clinical",
+  "output_root": "results/Data/TCGA_BRCA_preprocessing",
+  "min_per_class_per_site": 5
+}

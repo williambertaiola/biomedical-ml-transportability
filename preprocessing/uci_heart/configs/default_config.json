@@ -1,0 +1,22 @@
+{
+  "project_root": "results/Data/UCI_Heart_preprocessing",
+  "random_seed": 20260327,
+  "timezone": "Europe/Madrid",
+  "min_valid_raw_fraction": 0.95,
+  "min_domain_samples_warning": 30,
+  "high_missingness_warning": 0.4,
+  "input_paths": [
+    "data/raw/uci/cleveland.data",
+    "data/raw/uci/hungarian.data",
+    "data/raw/uci/long-beach-va.data",
+    "data/raw/uci/switzerland.data"
+  ],
+  "names_file_path": "data/raw/uci/heart-disease.names",
+  "requested_sync_output_root": null,
+  "expected_rows_by_domain": {
+    "cleveland": 303,
+    "hungarian": 294,
+    "long_beach_va": 200,
+    "switzerland": 123
+  }
+}

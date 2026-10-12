@@ -1,0 +1,5 @@
+{
+  "input_root": "data/raw/abide2/",
+  "output_root": "results/Data/ABIDE2_preprocessing",
+  "desktop_output_root": null
+}

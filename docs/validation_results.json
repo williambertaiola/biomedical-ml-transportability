@@ -1,0 +1,231 @@
+{
+  "validation_date": "2026-10-12",
+  "python": "3.12.14",
+  "platform": "macOS ARM64",
+  "unit_tests": {
+    "passed": 12,
+    "warnings": 1
+  },
+  "entrypoint_help_checks": {
+    "passed": 94
+  },
+  "comparisons": {
+    "uci": [
+      {
+        "table": "prediction_records",
+        "rows": 40053,
+        "columns": 13,
+        "comparison": "exact"
+      },
+      {
+        "table": "split_assignments",
+        "rows": 3680,
+        "columns": 5,
+        "comparison": "exact"
+      },
+      {
+        "table": "model_summary",
+        "rows": 15,
+        "columns": 15,
+        "comparison": "exact"
+      },
+      {
+        "table": "target_site_results",
+        "rows": 60,
+        "columns": 40,
+        "comparison": "exact"
+      },
+      {
+        "table": "m2_pairwise_weighting",
+        "rows": 144,
+        "columns": 12,
+        "comparison": "exact"
+      },
+      {
+        "table": "dataset_df",
+        "rows": 920,
+        "columns": 17,
+        "comparison": "exact"
+      },
+      {
+        "table": "id_validation_fold_metrics",
+        "rows": 180,
+        "columns": 32,
+        "comparison": "exact"
+      },
+      {
+        "table": "split_manifest",
+        "rows": 4,
+        "columns": 10,
+        "comparison": "exact"
+      }
+    ],
+    "abide": [
+      {
+        "table": "prediction_records",
+        "rows": 13125,
+        "columns": 13,
+        "comparison": "exact"
+      },
+      {
+        "table": "split_assignments",
+        "rows": 1114,
+        "columns": 5,
+        "comparison": "exact"
+      },
+      {
+        "table": "model_summary",
+        "rows": 15,
+        "columns": 15,
+        "comparison": "exact"
+      },
+      {
+        "table": "target_site_results",
+        "rows": 15,
+        "columns": 40,
+        "comparison": "exact"
+      },
+      {
+        "table": "m2_pairwise_weighting",
+        "rows": 15606,
+        "columns": 12,
+        "comparison": "exact"
+      },
+      {
+        "table": "dataset_df",
+        "rows": 1114,
+        "columns": 10,
+        "comparison": "exact"
+      },
+      {
+        "table": "id_validation_fold_metrics",
+        "rows": 270,
+        "columns": 32,
+        "comparison": "exact"
+      },
+      {
+        "table": "split_manifest",
+        "rows": 1,
+        "columns": 10,
+        "comparison": "exact"
+      }
+    ],
+    "tcga": [
+      {
+        "table": "prediction_records",
+        "rows": 9798,
+        "columns": 17,
+        "comparison": "exact"
+      },
+      {
+        "table": "split_assignments",
+        "rows": 829,
+        "columns": 5,
+        "comparison": "exact"
+      },
+      {
+        "table": "model_summary",
+        "rows": 15,
+        "columns": 16,
+        "comparison": "exact"
+      },
+      {
+        "table": "target_site_results",
+        "rows": 15,
+        "columns": 50,
+        "comparison": "exact"
+      },
+      {
+        "table": "m2_pairwise_weighting",
+        "rows": 900,
+        "columns": 12,
+        "comparison": "exact"
+      },
+      {
+        "table": "dataset_df",
+        "rows": 829,
+        "columns": 60697,
+        "comparison": "exact"
+      },
+      {
+        "table": "id_validation_fold_metrics",
+        "rows": 45,
+        "columns": 42,
+        "comparison": "exact"
+      },
+      {
+        "table": "split_manifest",
+        "rows": 1,
+        "columns": 10,
+        "comparison": "exact"
+      }
+    ]
+  },
+  "uci_preprocessing": {
+    "exact_files": [
+      "data/interim/uci_heart_unified.csv",
+      "data/processed/uci_heart_analysis_ready.csv",
+      "data/processed/uci_heart_feature_schema.json",
+      "data/splits/lodo_domains.json",
+      "data/processed/uci_heart_quality_checks.json",
+      "data/interim/uci_heart_ingestion_summary.json"
+    ],
+    "rows": 902
+  },
+  "archive_crc": {
+    "first_bad_member": null,
+    "elapsed_seconds": 11.12
+  },
+  "editable_install": "passed",
+  "pip_check": "passed",
+  "full_thesis_reproduction": "not performed",
+  "import_validation": {
+    "modules": [
+      "uci_transportability.metrics",
+      "uci_transportability.config",
+      "uci_transportability.models",
+      "uci_transportability.bootstrap_reporting",
+      "uci_transportability",
+      "uci_transportability.experiment",
+      "uci_transportability.weighting",
+      "uci_transportability.plots",
+      "uci_transportability.transductive",
+      "uci_transportability.data",
+      "uci_transportability.harmonization",
+      "uci_transportability.reporting",
+      "abide_transportability.metrics",
+      "abide_transportability.config",
+      "abide_transportability.models",
+      "abide_transportability.bootstrap_reporting",
+      "abide_transportability",
+      "abide_transportability.experiment",
+      "abide_transportability.weighting",
+      "abide_transportability.plots",
+      "abide_transportability.transductive",
+      "abide_transportability.data",
+      "abide_transportability.harmonization",
+      "abide_transportability.reporting",
+      "tcga_transportability.metrics",
+      "tcga_transportability.feature_selection",
+      "tcga_transportability.config",
+      "tcga_transportability.models",
+      "tcga_transportability.bootstrap_reporting",
+      "tcga_transportability",
+      "tcga_transportability.experiment",
+      "tcga_transportability.weighting",
+      "tcga_transportability.plots",
+      "tcga_transportability.transductive",
+      "tcga_transportability.data",
+      "tcga_transportability.harmonization",
+      "tcga_transportability.reporting",
+      "thesis_tools.metrics",
+      "thesis_tools.paths",
+      "thesis_tools"
+    ],
+    "status": "passed"
+  },
+  "gitignore_validation": {
+    "publication_files_unexpectedly_ignored": 0,
+    "private_examples_excluded": 5
+  }
+}
