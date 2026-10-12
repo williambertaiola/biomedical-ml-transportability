@@ -159,7 +159,7 @@ Some later thesis analyses require several method bundles and historical summary
 
 ## Reproducibility
 
-Core experiment seed defaults remain 42; the UCI preprocessing seed remains 20260327. Split ratios, method weights, estimators, feature selection, and metric implementations retain their original values. Saved run snapshots record selected methods and seeds. Configured filesystem locations have changed; numerical changes have not been introduced into the core calculations.
+Core experiment seed defaults remain 42. Split ratios, method weights, estimators, feature selection, and metric implementations retain their original values. Saved run snapshots record selected methods and seeds. Configured filesystem locations have changed; numerical changes have not been introduced into the core calculations.
 
 Feasible checks are reproducible with:
 
@@ -184,7 +184,3 @@ Validation compared the full UCI M0–M4 run and selected ABIDE/TCGA target-site
 **William Bertaiola** — Master's Thesis in Bioengineering, University of Padua, in collaboration with the Universitat Politècnica de València.
 
 Thesis: *Cross-Site Transportability in Biomedical Machine Learning: Evaluation and Adaptation Strategies*.
-
-## License
-
-No project license was found or selected. No license grant has been added. Before publication, select an appropriate code license and review provenance/permissions for the preserved DASHI-derived modules and other contributions. Dataset terms are separate from the code license.
